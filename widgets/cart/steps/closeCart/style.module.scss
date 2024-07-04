@@ -1,0 +1,82 @@
+.cart {
+  background: #dd2c40;
+  // width: 100vw;
+  // height: 80vh;
+  // position: fixed;
+  // z-index: 12;
+  // bottom: -75%;
+  transition: all 0.3s ease-in-out;
+  // overflow: auto;
+  .heading {
+    padding: 5px 0;
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    font-family: var(--vivl-font);
+  }
+  .cartContent {
+    padding-top: 80px;
+    margin: 0 auto;
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    .cartTotal {
+      display: flex;
+      flex-direction: column;
+      gap: 60px;
+      align-items: center;
+      h2 {
+        color: #ffffff;
+        font-family: var(--vivl-font);
+        font-size: 33px;
+      }
+      p {
+        color: #ffffff;
+        width: 300px;
+        font-family: 'Blender Pro', sans-serif;
+        font-weight: 300;
+      }
+      button {
+        width: 303px;
+        font-size: 26px;
+        font-family: var(--vivl-font);
+        border: 2px solid #ffffff;
+        background: #000;
+        color: #ffffff;
+        padding: 7px;
+        transition: all ease-in-out 0.3s;
+        &:hover {
+          background: #ffffff;
+          color: #000;
+          /* Добавьте здесь любые изменения, которые хотите видеть при наведении */
+        }
+      }
+    }
+  }
+}
+.openCart {
+  bottom: 0;
+}
+
+@media screen and (max-width: 431px) {
+  .cart {
+    max-width: 430px;
+    .heading {
+      width: 430px;
+    }
+    .cartContent {
+      width: 370px;
+      .cartTotal {
+        button {
+          width: 340px;
+          padding: 17px;
+        }
+      }
+    }
+  }
+  .openCart {
+    width: 430px;
+  }
+}

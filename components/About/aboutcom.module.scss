@@ -1,0 +1,238 @@
+.about {
+  h1 {
+    max-width: 1200px;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 58px;
+    margin-bottom: 30px;
+    font-family: 'VIVL RAIL', sans-serif;
+    width: 100%;
+    margin: 70px auto;
+    color: #ffffff;
+  }
+
+  &_one {
+    max-width: 1200px;
+    width: 100%;
+    font-family: 'Blender Pro  300', sans-serif;
+    display: flex;
+    margin: 0 auto;
+    margin-top: 100px;
+    justify-content: space-between;
+    gap: 100px;
+
+    &_text {
+      font-size: 24px;
+      line-height: 29px;
+      font-weight: 400 !important;
+      font-family: 'Blender Pro 300', sans-serif;
+      color: #ffffff;
+    }
+    .newest {
+      .newest_wrapper {
+        .right {
+          .img {
+            max-width: 470px;
+            height: 370px;
+            width: 100%;
+            background: #d9d9d9;
+            position: relative;
+            align-self: self-start;
+
+            img {
+              width: 100%;
+              height: 370px;
+            }
+
+            &::before {
+              position: absolute;
+              top: -1px;
+              left: -20px;
+              content: '';
+              z-index: 9;
+              height: 0;
+              width: 50px;
+              border-bottom: 80px solid #000;
+              border-left: 50px solid transparent;
+              border-right: 0px solid transparent;
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &_two {
+    margin-top: 100px;
+    // height: 67vh;
+    padding: 121px 0;
+    background-image: url(../../public/assets/images/Frame58.png);
+    background-size: 100% 100%;
+    div {
+      width: 43%;
+      z-index: 9;
+      display: flex;
+      flex-direction: column;
+      p {
+        margin-top: 70px;
+        margin-left: 40px;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29px;
+        font-family: 'Blender Pro 300', sans-serif;
+        padding-left: 90px;
+        color: black;
+        margin-bottom: 30px;
+      }
+      Button {
+        width: 400px;
+        font-size: 24px;
+        font-weight: 400;
+        line-height: 29px;
+        margin: 0 auto;
+      }
+    }
+  }
+
+  &_thee {
+    max-width: 1200px;
+    width: 100%;
+    font-family: 'Blender Pro 300', sans-serif;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: space-between;
+    padding-bottom: 30px;
+    p {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 29px;
+      margin-top: 30px;
+      color: #ffffff;
+    }
+
+    &_text {
+      display: flex;
+      gap: 80px;
+      color: #ffffff;
+
+      &_box {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .address {
+          font-size: 36px;
+          font-family: 'Blender Pro 500', sans-serif;
+          display: flex;
+          flex-direction: column;
+          span {
+            line-height: 30px;
+          }
+        }
+        .grafic {
+          font-size: 36px;
+          font-family: 'Blender Pro 200', sans-serif;
+        }
+        .contacts {
+          font-size: 36px;
+          font-family: 'Blender Pro 200', sans-serif;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          a {
+            border-bottom: 1px solid #fff;
+          }
+        }
+        Button {
+          width: 100%;
+          font-size: 36px;
+          font-weight: 400;
+          line-height: 29px;
+          margin-top: 30px;
+          font-family: 'VIVL RAIL', sans-serif;
+        }
+      }
+    }
+    .newest {
+      .newest_wrapper {
+        .right {
+          .img {
+            max-width: 470px;
+            height: 370px;
+            width: 100%;
+            background: #d9d9d9;
+            position: relative;
+            align-self: self-start;
+
+            img {
+              width: 100%;
+              height: 370px;
+            }
+
+            &::before {
+              position: absolute;
+              top: -1px;
+              left: -20px;
+              content: '';
+              z-index: 9;
+              height: 0;
+              width: 50px;
+              border-bottom: 80px solid #000;
+              border-left: 50px solid transparent;
+              border-right: 0px solid transparent;
+              transform: rotate(180deg);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .about {
+    width: 100%;
+    margin: 0 auto;
+    h1 {
+      font-size: 32px;
+      text-align: center;
+    }
+    h5 {
+      font-size: 16px;
+      padding: 10px;
+    }
+    &_one {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 50px;
+      width: 300px;
+      &_text {
+        width: 400px;
+        font-size: 16px;
+        text-align: center;
+      }
+    }
+    &_two {
+      background-image: url(../../public/assets/images/tyansfonom.png);
+      background-repeat: no-repeat;
+      margin: 0 auto;
+      width: 420px;
+      height: 250px;
+      p {
+        display: none;
+      }
+      button {
+        display: none;
+      }
+    }
+    &_thee {
+      width: 442px;
+      text-align: center;
+      h1 {
+        width: 300px;
+      }
+    }
+  }
+}

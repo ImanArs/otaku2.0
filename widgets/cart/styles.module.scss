@@ -1,0 +1,87 @@
+.cart {
+  background: #dd2c40;
+  width: 100vw;
+  height: 80vh;
+  position: fixed;
+  z-index: 110;
+  bottom: -75%;
+  left: 0;
+  transition: all 0.3s ease-in-out;
+  overflow-Y: scroll; // Изменено здесь
+  margin-top: 60px;
+  /* Стилизация скроллбара */
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  .heading {
+    cursor: pointer;
+    padding: 5px 0;
+    text-align: center;
+    font-size: 24px;
+    color: #ffffff;
+    font-family: var(--vivl-font);
+    position: fixed;
+    width: 100%;
+    left: 0;
+    z-index: 9;
+    background: #dd2c40;
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: -20px;
+      background-image: url(../../public/assets/images/image_top_cart.svg);
+      background-size: cover;
+      z-index: -1;
+    }
+  }
+}
+.openCart {
+  bottom: 0;
+}
+
+@media screen and (max-width: 431px) {
+  .cart {
+    max-width: 430px;
+    .heading {
+      width: 430px;
+      font-size: 24px;
+      font-weight: 400;
+    }
+    .cartContent {
+      width: 410px;
+      margin: 0 auto;
+      .cartItems {
+        width: 400px;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 25px;
+      }
+      .cartTotal {
+        margin: 0 auto;
+        width: 375px;
+        button {
+          width: 200px;
+        }
+      }
+    }
+  }
+  .openCart {
+    width: 430px;
+  }
+}

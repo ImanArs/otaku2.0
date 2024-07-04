@@ -1,0 +1,26 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  &_one {
+    margin-top: -50px;
+    margin-left: 300px;
+    display: flex;
+    flex-direction: column;
+  }
+  Button {
+    margin-top: 120px;
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 400;
+    font-family: var(--vivl-font);
+  }
+  h2 {
+    margin-top: 60px;
+    font-size: 48px;
+    line-height: 58px;
+    font-weight: 400;
+    font-family: var(--vivl-font);
+  }
+}

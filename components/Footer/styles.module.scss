@@ -1,0 +1,179 @@
+.footer {
+  margin-top: 120px;
+  max-width: 2560px;
+  background: #fff;
+  position: relative;
+  &:before {
+    z-index: -3;
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 50%;
+    background-image: url(../../public/assets/images/image_top_footer.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    top: -115px;
+    left: 0;
+  }
+  &:after {
+    z-index: -3;
+    position: absolute;
+    content: '';
+    width: 20%;
+    height: 10%;
+    background-image: url(../../public/assets/images/footer_bottom.svg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+  &_wrapper {
+    width: 86%;
+    margin: 0 auto;
+    padding: 40px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #000;
+    .first {
+      .info {
+        font-family: 'Blender Pro 500', sans-serif;
+        letter-spacing: 0.2px;
+        text-transform: uppercase;
+        font-size: 18px;
+        font-weight: 900;
+        margin-top: 48px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+      }
+      .cardOperations {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .images {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 20px;
+          img {
+            width: 92px;
+          }
+          .masterCard {
+            width: 57px;
+          }
+        }
+        .spans {
+          display: flex;
+          flex-direction: column;
+
+          span {
+            font-family: 'Blender Pro', sans-serif;
+            font-size: 16px;
+            font-weight: 500;
+          }
+        }
+        .span2 {
+          font-family: 'Blender Pro', sans-serif;
+          font-size: 16px;
+          font-weight: 500;
+          color: rgba(217, 217, 217, 1);
+        }
+      }
+    }
+
+    .second {
+      font-family: var(--vivl-font);
+      ul {
+        li {
+          font-size: 30px;
+          font-weight: 400;
+        }
+      }
+    }
+    .third {
+      font-family: var(--vivl-font);
+      ul {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        li {
+          color: #fff;
+          padding: 14px 20px;
+          font-size: 36px;
+          position: relative;
+          z-index: 2;
+          * {
+            transition: all .2s ease-in-out;
+          }
+          a {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+          }
+          .socialBg {
+            top: 0;
+            left: 0;
+            position: absolute;
+            z-index: -1;
+          }
+          &:hover {
+            a {
+              color: #DD2C40;
+            }
+            svg g path {
+              stroke: #DD2C40;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .footer {
+    width: 100%;
+    padding-top: 20px;
+
+    .footer_wrapper {
+      display: flex;
+      flex-direction: column-reverse;
+      text-align: center;
+      margin: 0 auto;
+      .second {
+        margin-top: 30px;
+      }
+      .first {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        .logo {
+          display: none;
+        }
+        .cardOperations {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+      }
+      .third {
+        width: 380px;
+        .info {
+          display: grid;
+          grid-template-columns: repeat(2, 200px);
+          margin: 0 auto;
+          li {
+            width: 175px;
+            background: #0005;
+            color: #fff;
+            padding: 7px 7px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}

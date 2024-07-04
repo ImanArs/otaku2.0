@@ -1,0 +1,24 @@
+.root {
+  position: relative;
+  .menuWrapper {
+    cursor: pointer;
+    display: flex;
+    gap: 10px;
+    h3 {
+      font-size: 48px;
+      color: black;
+      font-family: 'Blender Pro', sans-serif;
+    }
+    .lini {
+      margin-top: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+  .headerMenu {
+    position: absolute;
+    top: 100%;
+    right: -25%;
+  }
+}

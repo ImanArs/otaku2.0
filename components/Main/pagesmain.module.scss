@@ -1,0 +1,153 @@
+.main {
+  display: flex;
+  margin-top: -50px;
+  justify-content: space-between;
+}
+.main_one {
+  display: flex;
+  gap: 50px;
+}
+.main_two {
+  padding-right: 50px;
+  img {
+    width: 750px;
+    height: 500px;
+  }
+}
+.qr {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.qq {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.imgkrug {
+  margin-bottom: 20px;
+  margin-left: 10px;
+  width: 70px;
+}
+.qwe {
+  margin-top: 100px;
+  width: 540px;
+  h1 {
+    color: #fff;
+    font-size: 68px;
+    font-weight: 700;
+    line-height: 60px;
+    font-family: 'Blender Pro 500', sans-serif;
+    text-transform: uppercase;
+  }
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    button {
+      padding: 16px 34px;
+      font-family: 'VIVL RAIL', sans-serif;
+      font-size: 32px;
+      font-weight: 400;
+      max-width: 261px;
+      width: 100%;
+    }
+  }
+  .bottom {
+    margin-top: 100px;
+  }
+  &_black {
+    display: flex;
+    gap: 10px;
+    &_one {
+      width: 270px;
+    }
+    &_img {
+      display: flex;
+      flex-direction: column;
+      margin-top: 45px;
+      height: 20px;
+      gap: 3px;
+    }
+  }
+}
+@media screen and (min-width: 1440px) {
+  .qwe {
+    width: 540px;
+    h3 {
+      font-size: 64px;
+      font-weight: 700;
+      line-height: 60px;
+    }
+    &_red {
+      // margin-left: 5px;
+      p {
+        font-size: 64px;
+        font-weight: 700;
+        line-height: 60px;
+        color: rgba(221, 44, 64, 1);
+      }
+      div {
+        span {
+          position: absolute;
+          color: #fff;
+          font-family: var(--vivl-font);
+        }
+      }
+    }
+    &_black {
+      display: flex;
+      gap: 10px;
+      &_one {
+        width: 270px;
+      }
+      &_img {
+        display: flex;
+        flex-direction: column;
+        margin-top: 45px;
+        height: 20px;
+        gap: 3px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    width: 100%;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    margin: 0 auto;
+    .main_one {
+      width: 420px;
+      h3 {
+        display: none;
+      }
+      .qwe {
+        margin: 20px;
+        p {
+          display: none;
+        }
+        .fanService {
+          display: none;
+        }
+        .beachEpisode {
+          display: none;
+        }
+      }
+      .imgkrug {
+        display: none;
+      }
+      .qr {
+        display: none;
+      }
+    }
+    .main_two {
+      width: 430px;
+      img {
+        width: 430px;
+        height: 369px;
+      }
+    }
+  }
+}

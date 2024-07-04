@@ -1,0 +1,71 @@
+.bestsellers {
+  min-height: 100vh;
+  position: relative;
+
+  &_wrapper {
+    max-width: 1260px;
+    width: 100%;
+    overflow: hidden;
+    margin: 0 auto;
+    margin-top: 100px;
+    display: grid;
+    position: relative;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 60px 20px;
+    font-family: 'Blender Pro', sans-serif;
+    color: #ffffff;
+  }
+  .bestsellers_button {
+    font-size: 36px;
+    width: 263px;
+    margin: 0 auto;
+  }
+  .button_wrap {
+    max-width: 1260px;
+    width: 100%;
+    margin: 50px auto;
+  }
+  &::before {
+    width: 100%;
+    height: 100px;
+    content: '';
+    background: url(../../../../public/assets/images/image_top_bestsellers.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: -1;
+    position: absolute;
+    top: -30px;
+    left: 0;
+  }
+  &::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-image: url(../../../../public/assets/images/otaku_bg.svg);
+    background-size: 70% 100%;
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    transform: rotate(25deg);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .bestsellers {
+    width: 100%;
+    margin: 0 auto;
+    &_wrapper {
+      padding-top: 40px;
+      margin: 0 auto;
+      width: 400px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .button_wrap {
+      margin: 0 auto;
+      padding-top: 30px;
+      width: 260px;
+    }
+  }
+}

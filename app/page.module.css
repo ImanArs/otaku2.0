@@ -1,0 +1,17 @@
+
+.swiper-pagination,
+.swiper-pagination-clickable,
+.swiper-pagination-bullets,
+.swiper-pagination-horizontal {
+  /* margin-top: 40px; */
+  bottom: -40px !important;
+}
+.swiper-pagination-clickable {
+  bottom: -40px !important;
+}
+.swiper-pagination-bullets {
+  bottom: -40px !important;
+}
+.swiper-pagination-clickable {
+  bottom: -40px !important;
+}

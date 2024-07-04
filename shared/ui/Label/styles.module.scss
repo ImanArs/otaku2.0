@@ -1,0 +1,18 @@
+.label {
+  width: 400px;
+  text-align: center;
+  padding-bottom: 20px;
+  margin-bottom: 20vh;
+  padding: 7px 0 20px 0;
+  font-size: 36px;
+}
+.label__red {
+  background: url(../../../public/assets/images/label_red.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+.label__black {
+  background: url(../../../public/assets/images/label_black.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}

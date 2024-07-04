@@ -1,0 +1,21 @@
+.qwe {
+  img {
+    margin-top: -5px;
+    max-width: 2560px;
+    height: 50px;
+    width: 100%;
+  }
+}
+
+.two {
+  margin-top: -5px;
+  background: #fff;
+}
+
+@media screen and (max-width: 600px) {
+  .qwe{
+    img{
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,198 @@
+.root {
+  width: 100%;
+  background: #000;
+  .payment_wrapper {
+    padding-top: 50px;
+    width: 1250px;
+    margin: 0 auto;
+    h1 {
+      font-family: var(--vivl-font);
+      font-size: 35px;
+      color: #ffffff;
+    }
+    .rules {
+      width: 917px;
+      ul {
+        width: 870px;
+        margin: 0 auto;
+        padding-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        list-style-type: disc;
+        li {
+          font-size: 21px;
+          color: #ffffff;
+          font-weight: 300;
+          font-family: 'Blender Pro', sans-serif;
+        }
+      }
+    }
+  }
+  .payment_by_card {
+    margin-top: 80px;
+    background-image: url(../../public/assets/images/kon.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    max-width: 100%;
+    width: 100%;
+    height: 560px;
+    .h1 {
+      font-family: var(--vivl-font);
+      font-size: 50px;
+      color: #000;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-right: 280px;
+      padding-top: 10px;
+      margin: 0 auto;
+    }
+    .payment_cards {
+      padding-top: 50px;
+      padding-left: 290px;
+      width: 696px;
+      margin: 0 auto;
+      .h2 {
+        width: 696px;
+        font-size: 20px;
+        font-weight: 600;
+        padding-bottom: 20px;
+        font-family: 'Blender Pro', sans-serif;
+      }
+      span {
+        font-size: 20px;
+        font-family: 'Blender Pro', sans-serif;
+      }
+      ul {
+        padding-top: 20px;
+        list-style-type: disc;
+        width: 660px;
+        padding-left: 30px;
+        li {
+          font-size: 20px;
+          font-family: 'Blender Pro', sans-serif;
+        }
+      }
+      .imagesCard {
+        padding-top: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 25px;
+      }
+    }
+  }
+  .instructions {
+    width: 1250px;
+    margin: 0 auto;
+    padding-top: 100px;
+    h2 {
+      font-family: var(--vivl-font);
+      font-size: 48px;
+      color: #ffffff;
+    }
+    ul {
+      padding-top: 30px;
+      list-style-type: disc;
+      padding-left: 25px;
+      display: flex;
+      padding-bottom: 40px;
+      flex-direction: column;
+      gap: 20px;
+      li {
+        color: #ffffff;
+        font-size: 20px;
+        font-family: 'Blender Pro', sans-serif;
+      }
+    }
+    span {
+      color: #ffffff;
+      font-size: 25px;
+      font-family: 'Blender Pro', sans-serif;
+      font-weight: 700;
+    }
+    .buttons {
+      padding-top: 40px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 5px;
+      padding-bottom: 20px;
+      button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 4px;
+        font-size: 20px;
+        font-family: var(--vivl-font);
+        border: 2px solid #ffffff;
+        background: #000;
+        color: #ffffff;
+        padding: 10px;
+        img {
+          width: 20px;
+          height: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .root {
+    width: 100%;
+    .payment_wrapper {
+      width: 430px;
+      .rules {
+        width: 430px;
+        ul {
+          width: 430px;
+          li {
+            font-size: 20px;
+          }
+        }
+      }
+    }
+    .payment_by_card {
+      padding-top: 20px;
+      background: #ffffff;
+      height: 500px;
+
+      h1 {
+        padding-left: 50px;
+      }
+      .payment_cards {
+        margin-top: 20px;
+        width: 430px;
+        padding: 0;
+        .h2 {
+          width: 430px;
+        }
+        ul {
+          width: 430px;
+          li {
+            font-size: 18px;
+          }
+        }
+      }
+      .imagesCard {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 25px;
+        img {
+          width: 120px;
+        }
+      }
+    }
+    .instructions {
+      width: 430px;
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        padding-bottom: 0;
+      }
+    }
+  }
+}
