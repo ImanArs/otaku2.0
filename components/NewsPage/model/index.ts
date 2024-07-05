@@ -14,7 +14,7 @@ export const useNews = create<{
   news: INews[];
   isLoading: boolean;
   setNews: () => void;
-  getNewsById: (id: number) => INews | undefined;
+  getNewsById: (id: number | string) => void;
 }>((set, get) => ({
   news: [],
   isLoading: true,

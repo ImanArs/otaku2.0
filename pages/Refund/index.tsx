@@ -2,7 +2,7 @@ import React from 'react'
 import cls from './styles.module.scss'
 import RefundTG from '@/public/assets/icons/refund_telegram.svg'
 
-export const RefundPage = () => {
+const RefundPage = () => {
   return (
     <div className={cls.root}>
       <div className={cls.info}>
@@ -36,3 +36,4 @@ export const RefundPage = () => {
     </div>
   )
 }
+export default RefundPage

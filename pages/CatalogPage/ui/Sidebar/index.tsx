@@ -4,7 +4,7 @@ import useCategory from "@/hook/UseCategory";
 import Checkbox from "../checkbox";
 import classNames from "classnames";
 import ReactSlider from 'react-slider'
-import { useCatalog } from "../../model";
+import { useCatalog } from "../../../../components/CatalogPage/model";
 
 interface Category {
   id: number;

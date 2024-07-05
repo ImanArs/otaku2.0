@@ -1,4 +1,3 @@
-import useProduct from '@/hook/UseProduct';
 import { create } from 'zustand';
 
 interface Category {
@@ -52,7 +51,4 @@ export const useCatalog = create<{
       set({ isLoading: false });
     }
   },
-  // filteredProducts: () => set({
-
-  // })
 }));

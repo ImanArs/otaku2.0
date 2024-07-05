@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import cls from './styles.module.scss';
-import { useNews } from './model';
+import { useNews } from '../../components/NewsPage/model';
 import { Loading } from '@/shared/ui/loading';
 import Link from 'next/link';
 
@@ -9,6 +9,7 @@ const NewsPage = () => {
   
   useEffect(() => {
     setNews()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   if (isLoading) return <Loading />
