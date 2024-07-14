@@ -21,8 +21,6 @@ export const Search: React.FC<SearchProps> = ({ reversed, className, searchArr }
   const filteredProducts = searchArr?.filter(product =>
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  console.log(searchArr);
-  
 
   const toggleSearch = () => {
     // setOpenSearch(!openSearch); 

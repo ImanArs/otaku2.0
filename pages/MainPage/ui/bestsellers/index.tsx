@@ -5,6 +5,7 @@ import { ProductCard } from '@/shared/ui/ProductCard';
 import cls from './styles.module.scss';
 import useProduct from '@/hook/UseProduct';
 import { Search } from '@/shared/ui/Search';
+import { SearchMain } from '@/components/Main/components/SearchMain';
 
 const MainBestSellers = () => {
   const products = useProduct();
@@ -12,7 +13,8 @@ const MainBestSellers = () => {
   return (
     <div className={cls.bestsellers}>
       <div className={cls.top} />
-      <Search reversed className={cls.search} searchArr={products} />
+      <SearchMain searchArr={products} />
+      {/* <Search reversed className={cls.search} searchArr={products} /> */}
       <div className={cls.bestsellers_wrapper}>
         {products.map((product, index) => (
           <ProductCard key={index} product={product} />

@@ -3,7 +3,6 @@ import React from 'react';
 import cls from '../../pages/MainPage/ui/newest/styles.module.scss';
 
 import { Pagination, A11y } from 'swiper/modules';
-
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
@@ -11,6 +10,10 @@ import 'swiper/css/pagination';
 import s from './aboutcom.module.scss';
 import { Button } from '@/shared/ui/Button';
 import Link from 'next/link';
+import TikTokIcon from '@/public/assets/icons/about_tiktock_icon.svg'
+import InstaIcon from '@/public/assets/icons/about_insta_icon.svg'
+import TelegramIcon from '@/public/assets/icons/about_teleg_icon.svg'
+import WhatsappIcon from '@/public/assets/icons/about_whatsapp_icon.svg'
 
 export default function AboutComponents() {
   const swiperImage = 'https://letsenhance.io/static/8f5e523ee6b2479e26ecc91b9c25261e/1015f/MainAfter.jpg'
@@ -33,6 +36,12 @@ export default function AboutComponents() {
             саг. Наш теплый коллектив – это не только команда профессионалов, но и настоящие фанаты
             аниме, которые знают о своем деле абсолютно все.
           </p>
+          <div className={s.socialIcons}>
+            <TikTokIcon />
+            <InstaIcon />
+            <TelegramIcon />
+            <WhatsappIcon />
+          </div>
         </div>
         <div className={s.newest} style={{ background: 'transparent' }}>
           <div className={s.newest_wrapper}>
@@ -132,7 +141,7 @@ export default function AboutComponents() {
               <li><a href="tel:+12345678910">+1(234)567-89-10</a></li>
             </ul>
             <Link href="https://2gis.kg/bishkek/inside/70030076176806058/firm/70000001064772335?floor=0&m=74.614961%2C42.876732%2F19.97">
-              <Button type="black"> Oткрыть карту</Button>
+              <Button type="black">Oткрыть карту</Button>
             </Link>
           </div>
         </div>

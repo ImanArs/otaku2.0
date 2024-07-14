@@ -6,13 +6,13 @@ import { Button } from "@/shared/ui/Button";
 import Link from "next/link";
 
 function Error404() {
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      window.location.href = "/";
-    }, 10000);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     window.location.href = "/";
+  //   }, 10000);
 
-    return () => clearTimeout(timer);
-  }, []);
+  //   return () => clearTimeout(timer);
+  // }, []);
 
   return (
     <div className={s.error}>
@@ -27,7 +27,7 @@ function Error404() {
       <Button type="red">
         <Link href="/">Вернуться на главную</Link>
       </Button>
-      <h2>Похоже, Вы попали на несуществующую страницу.</h2>
+      <p>Похоже, Вы попали на несуществующую страницу.</p>
     </div>
   );
 }

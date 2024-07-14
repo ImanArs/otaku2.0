@@ -40,7 +40,8 @@ export default function Header() {
           </div>
         )} */}
           <div className={s.header_blocks_registr}>
-            <span onClick={() => setShowLoginModal(true)}>Войти</span>/
+            <span onClick={() => setShowLoginModal(true)}>Войти</span>
+            <span>/</span>
             <span onClick={() => setShowRegisterModal(true)}>Зарегистрироваться</span>
           </div>
         <div className={s.header_blocks_text} onClick={() => setOpenMenu(!openMenu)}>

@@ -69,7 +69,7 @@ const Sidebar = ({className}: {className?: string;}) => {
                   key={subCategory.codename}
                   checked={checkedCategories.includes(subCategory)}
                   label={subCategory.name}
-                  className={cls.subheading}
+                  className={classNames(cls.subheading, {[cls.red]: checkedCategories.includes(subCategory)}, [])}
                   onChange={() => handleCheckboxChange(subCategory)}
                 />
               ))}

@@ -1,6 +1,7 @@
 import { Button } from '@/shared/ui/Button';
 import s from './pagesmain.module.scss';
 import Link from 'next/link';
+import { MapMain } from './components/MapMain';
 
 export default function Pagesmain() {
   return (
@@ -17,8 +18,10 @@ export default function Pagesmain() {
           <h1>Всё, что связано с аниме, можно найти здесь.</h1>
           <div className={s.bottom}>
             <div className={s.buttons}>
-              <Button type="red" className={s.redBtn}>Каталог</Button>
-              <Button type="black" className={s.blackBtn}>Каталог</Button>
+              <Link href='/catalog'>
+                <Button type="red" className={s.redBtn}>Каталог</Button>
+              </Link>
+              <Button type="black" className={s.blackBtn}>Контакты</Button>
             </div>
             <div className={s.qwe_black}>
               <div className={s.qwe_black_img}>

@@ -5,20 +5,22 @@
     display: flex;
     gap: 10px;
     h3 {
-      font-size: 48px;
+      font-size: 38px;
       color: black;
-      font-family: 'Blender Pro', sans-serif;
+      font-family: 'VIVL RAIL', sans-serif;
     }
     .lini {
-      margin-top: 8px;
+      // margin-top: 8px;
       display: flex;
       flex-direction: column;
       gap: 5px;
+      width: 50px;
     }
   }
   .headerMenu {
     position: absolute;
     top: 100%;
-    right: -25%;
+    left: 37%;
+    transform: translateX(-50%);
   }
 }

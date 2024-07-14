@@ -54,10 +54,10 @@ const CatalogPage: React.FC = () => {
   }
 
   return (
-    <Suspense fallback={<p>Loading feed...</p>}>
+    <Suspense fallback={<Loading />}>
     <main className={cls.catalogPage}>
       <div className={cls.sidebarBlock}>
-      <Sidebar />
+        <Sidebar />
       </div>
       <div className={cls.catalogContent}>
         <Search reversed className={cls.search} searchArr={products} />

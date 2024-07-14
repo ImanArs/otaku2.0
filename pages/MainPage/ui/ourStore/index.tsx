@@ -11,6 +11,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
+import { MapMain } from '@/components/Main/components/MapMain';
+import Link from 'next/link';
 
 const OurStore = () => {
   return (
@@ -18,7 +20,7 @@ const OurStore = () => {
       <div className={cls.ourStore__header}>
         <div className={cls.head} />
         <div className={cls.content}>
-          <iframe src="https://www.google.com/maps/d/embed?mid=1API2X097jH0gFlbv0GzWPUQXHoE&hl=en_US&ehbc=2E312F"></iframe>
+          <iframe className='yMap' src="https://yandex.ru/map-widget/v1/?um=constructor%3A04f98b4a13267354eab2d205950c7be0cea9c3adceb13fa43d148e13e307b2d9&amp;source=constructor" width="100%" height="500" frameBorder="0"></iframe>
         </div>
         <div className={cls.bottom} />
       </div>
@@ -73,7 +75,9 @@ const OurStore = () => {
             знаниями и помочь найти именно то, что зажглось в вашем воображении.
           </p>
           <div className={cls.actions}>
-            <Button type="red">Каталог</Button>
+            <Link href='/catalog'>
+              <Button type="red">Каталог</Button>
+            </Link>
             <Button type="black">контакты</Button>
           </div>
         </div>

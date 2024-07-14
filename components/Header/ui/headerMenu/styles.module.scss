@@ -1,7 +1,7 @@
 .menu {
   display: flex;
   flex-direction: column;
-  gap: 46px;
+  gap: 16px;
   padding: 50px 70px;
   background: #0008;
   backdrop-filter: blur(6px);
@@ -11,7 +11,7 @@
 
   li {
     z-index: 99 !important;
-    font-size: 36px;
+    font-size: 28px;
     font-weight: 400;
     a {
       font-family: var(--vivl-font) !important;

@@ -12,7 +12,6 @@ const useProductId = (product_id: any) => {
           throw new Error('Failed to fetch products');
         }
         const data = await response.json();
-        // console.log(data,3827874762736842);
         setProducts(data.results);
       } catch (error) {
         console.error('Error fetching products:', error);
