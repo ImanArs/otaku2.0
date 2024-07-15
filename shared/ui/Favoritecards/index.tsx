@@ -77,9 +77,8 @@ export const Favoritecards = ({ product }: { product: Product }) => {
         </div>
       </Link>
       <div className={cls.card_actions}>
-        <button onClick={() => console.log('купить')}>купить</button>
-        <button onClick={() => console.log('смотреть')}>
-          {' '}
+        <button>купить</button>
+        <button>
           <Link href={`/detail/${categoryCodename}/${subcategoryCodename}/${product.id}`}>
             Смотреть
           </Link>

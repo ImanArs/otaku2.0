@@ -10,7 +10,7 @@ import SocialBg from '@/public/assets/images/footer_social_links_bg.svg';
 
 const secondLinks = [
   { name: 'каталог', link: '#' },
-  { name: 'Контакты', link: '#' },
+  { name: 'Контакты', link: '#footer' },
   { name: 'МАГАЗИНЫ', link: '#' },
   { name: 'Доставка', link: '#' },
   { name: 'вОЗВРАТ', link: '#' },
@@ -32,7 +32,7 @@ const socialMediaLinks = [
 
 export const Footer = () => {
   return (
-    <footer className={cls.footer}>
+    <footer className={cls.footer} id='footer'>
       <div className={cls.footer_wrapper}>
         <div className={cls.top} />
         <div className={cls.first}>
@@ -51,10 +51,10 @@ export const Footer = () => {
               <img src="/assets/images/visa.png" alt="" />
               <img className={cls.masterCard} src="/assets/images/masterCard.png" alt="" />
             </div>
-            <div className={cls.spans}>
+            {/* <div className={cls.spans}>
               <span>Политика конфидециальности</span>
               <span>Договор оферты</span>
-            </div>
+            </div> */}
             <span className={cls.span2}>© 2024 / “OTAKU” / Все права защищены.</span>
           </div>
         </div>

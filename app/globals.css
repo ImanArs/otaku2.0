@@ -113,9 +113,10 @@ a {
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: url(../public/assets/images/bgOtaku.png);
-  /* background: #040404; */
+  /* color: rgb(var(--foreground-rgb));
+  background: url(../public/assets/images/bgOtaku.png); */
+  background: #040404;
+  scroll-behavior: smooth;
 }
 
 a {

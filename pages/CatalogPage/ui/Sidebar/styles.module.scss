@@ -1,13 +1,22 @@
 .sidebar {
-  max-width: 300px;
-  width: 100%;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  
-  background: url(../../../../public/assets/images/bg_sidebar.png);
-  background-size: 100% 100%;
+  position: sticky;
+  height: 100%;
+  height: fit-content;
+  top: 0;
+  left: 0px;
+  z-index: 9;
+
+  .sidebar_content {
+    max-width: 300px;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    
+    background: url(../../../../public/assets/images/bg_sidebar.png);
+    background-size: 100% 100%;
+  }
 
   &_amountWrapper {
     display: flex;
@@ -152,24 +161,3 @@
   background: #dd2c40;
   padding: 3px 0;
 }
-@media screen and (min-width: 768px) {
-  .buttonopen {
-    display: none;
-  }
-
-  .toggleButton {
-    display: none;
-  }
-
-  .sidebar {
-    transform: none;
-    transition: none;
-  }
-}
-@media screen and (max-width: 768px) {
-  .sidebar {
-    background: #000;
-    position: fixed;
-  }
-}
-

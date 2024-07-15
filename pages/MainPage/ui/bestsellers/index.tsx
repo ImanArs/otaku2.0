@@ -14,7 +14,6 @@ const MainBestSellers = () => {
     <div className={cls.bestsellers}>
       <div className={cls.top} />
       <SearchMain searchArr={products} />
-      {/* <Search reversed className={cls.search} searchArr={products} /> */}
       <div className={cls.bestsellers_wrapper}>
         {products.map((product, index) => (
           <ProductCard key={index} product={product} />

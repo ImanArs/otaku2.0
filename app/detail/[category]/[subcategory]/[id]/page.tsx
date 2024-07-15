@@ -2,11 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/shared/ui/Button";
 import cls from "../../styles.module.scss";
-import { Metadata } from "next";
 import { getPostById } from "@/hook/usePro";
 import DetailGallery from "@/pages/DetailPage/ui/Gallery";
-import ProductVariantCard from "@/pages/DetailPage/ui/ProductVariantCard";
-import { useSearchParams } from "next/navigation";
 import useProduct from "@/hook/UseProduct";
 import { ProductCard } from "@/shared/ui/ProductCard";
 import { Loading } from "@/shared/ui/loading";
@@ -76,7 +73,7 @@ const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
         <div className={cls.info}>
           <div className={cls.heading}>
             <h2>{post.title}</h2>
-            <h2>{post.price}</h2>
+            <span>{post.price}</span>
             <Button type="red">Добавить в корзину</Button>
           </div>
           <div className={cls.variants}>
@@ -98,7 +95,7 @@ const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
         </div>
       </div>
       <section className={cls.also_look}>
-        <h2>Рекомендации</h2>
+        <h2>Смотрите также</h2>
         <div className={cls.wrapper}>
           {filteredProducts.map((product, index) => (
             <ProductCard key={index} product={product} />

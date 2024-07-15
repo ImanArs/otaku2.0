@@ -26,9 +26,6 @@ const useProduct = () => {
           throw new Error('Failed to fetch products');
         }
         const data = await response.json();
-        console.log(data);
-        
-        // console.log(data.results);
         setProducts(data.results);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -37,9 +34,7 @@ const useProduct = () => {
 
     fetchProducts();
 
-    // Возвращаем функцию очистки для отмены запроса, если компонент размонтируется
     return () => {
-      // Логика для отмены запроса, если необходимо
     };
   }, [])
 

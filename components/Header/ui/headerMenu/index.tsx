@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const headerMenuLinks = [
   { name: 'каталог', link: '/catalog' },
-  { name: 'Контакты', link: '/contacts' },
+  { name: 'Контакты', link: '#footer' },
   { name: 'МАГАЗИНЫ', link: '/shops' },
   { name: 'Доставка', link: '/delivery' },
   { name: 'Возврат', link: '/refund' },

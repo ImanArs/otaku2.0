@@ -5,56 +5,47 @@ import classNames from 'classnames';
 import Checkout from './steps/checkout/Checkout';
 import CloseCart from './steps/closeCart/CloseCart';
 import { Cart } from './steps/cart';
+import { useCart } from '@/hook/useCart';
 
 export const CartWidget = () => {
-  const [openCart, setOpenCart] = React.useState(false);
-  const cartRef = useRef<HTMLDivElement | null>(null);
-  const [currentStep, setCurrentStep] = React.useState(1);
-
-  const nextStep = () => setCurrentStep(currentStep + 1);
-  const closeCart = () => {
-    setCurrentStep(1)
-    setOpenCart(false)
-  }
+  const {cartStep, openCart, closeCart, toggleCart, nextStep} = useCart();
+  const cartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-      console.log(cartRef);
-      console.log(123);
-  }, [openCart])
-
-  useEffect(() => {
-    function handleClickOutside(event: MouseEvent) {
-      if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
-        setOpenCart(false);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (cartRef.current && !cartRef.current.contains(event.target as Node) && openCart) {
+        closeCart();
       }
-    }
-    console.log(1);
-    document.addEventListener('click', handleClickOutside)
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
     return () => {
-      // setCurrentStep(1)
-      console.log(2);
-      
-      document.removeEventListener('click', handleClickOutside)
-    }
-  }, []);
-  
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [openCart, closeCart]);
+
   const cartSteps: Record<string, ReactNode>= {
-    1: <Cart nextStep={nextStep} />,
+    1: <Cart nextStep={nextStep}  />,
     2: <Checkout nextStep={nextStep} />,
     3: <CloseCart closeCart={closeCart} />,
   }
+  const scrollToTop = () => {
+    cartRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  useEffect(() => {
+    scrollToTop()
+  }, [])
 
   return (
-    <>
-      <div
-        ref={cartRef}
-        className={classNames('',{
-            [cls.openCart]: openCart,
-          },[cls.cart],)}
-        >
-        <div className={cls.heading} onClick={() => setOpenCart(!openCart)}>Корзина</div>
-        {cartSteps[currentStep]}
-      </div>
-    </>
+    <div
+      ref={cartRef}
+      className={classNames('',{
+        [cls.openCart]: openCart,
+      },[cls.cart],)}
+      >
+      <div className={cls.heading} onClick={toggleCart}>Корзина</div>
+      {cartSteps[cartStep]}
+    </div>
   );
 };

@@ -12,14 +12,25 @@
     max-width: 600px;
     width: 100%;
     .heading {
+      display: flex;
+      flex-direction: column;
       h2 {
+        font-family: 'Blender Pro 500';
         font-size: 36px;
         font-weight: 900;
       }
+      span {
+        font-family: 'Blender Pro 500';
+        font-size: 36px;
+        font-weight: 900;
+        color: #DD2C40;  
+      }
       button {
+        align-self: self-start;
+        font-family: 'Blender Pro 500';
         margin-top: 20px;
         font-size: 32px;
-        width: 380px;
+        padding: 18px 36px;
       }
     }
     .variants {

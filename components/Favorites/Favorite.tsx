@@ -25,7 +25,6 @@ const Favorites: React.FC = () => {
     const data = await response.data;
     setFavorite(data);
     setLoading(false);
-    console.log(favorite);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

@@ -12,13 +12,14 @@
     position: relative;
     grid-template-columns: repeat(5, 1fr);
     gap: 60px 20px;
-    font-family: 'Blender Pro', sans-serif;
     color: #ffffff;
   }
   .bestsellers_button {
+    padding: 16px 47px;
     font-size: 36px;
     width: 263px;
     margin: 0 auto;
+    font-family: 'VIVL RAIL', sans-serif;
   }
   .button_wrap {
     max-width: 1260px;

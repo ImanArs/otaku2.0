@@ -1,5 +1,6 @@
 import axios from "axios";
 import { create } from "zustand";
+import { toast } from 'react-toastify';
 
 export const useProductcard = create<{
   favorites: any[];
@@ -10,18 +11,35 @@ export const useProductcard = create<{
   favorites: [],
   addToFavorite: (id) => {
     const accessToken = localStorage.getItem('accessToken')
-    const refreshToken = localStorage.getItem('refreshToken')
-    console.log(refreshToken);
     
     axios.post(`http://13.60.49.147:8000/api/favorites/products/add/${id}/`, {}, {
       headers: {
         Authorization: `Bearer ${accessToken}`,
         'Content-Type': 'application/json'
       }
-    }).then((response) => {
-      console.log(response);
-    }).catch((error) => {
-      console.error(error);
+    }).then(() => {
+      get().getAllFavorites();
+      toast.success('Товар Успешно Добавлен', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
+    }).catch(() => {
+      toast.error('Вы должны зарегестрироваться', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     });
   },
   async getAllFavorites() {
@@ -35,8 +53,16 @@ export const useProductcard = create<{
       set({ favorites: response.data[0].products });
       return response.data;
     } catch (error) {
-      console.error("Failed to fetch favorites:", error);
-      throw error;
+      toast.error('Вы должны зарегестрироваться', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     }
   },
   removeFavorite: (id) => {
@@ -45,10 +71,29 @@ export const useProductcard = create<{
         Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
         'Content-Type': 'application/json'
       }
-    }).then((response) => {
-      console.log(response);
+    }).then(() => {
+      get().getAllFavorites();
+      toast.success('Товар Успешно Убран', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     }).catch((error) => {
-      console.error(error);
+      toast.error('не получилось удалить товар', {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+        });
     })
   }
 }))

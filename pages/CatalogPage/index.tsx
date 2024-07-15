@@ -54,13 +54,12 @@ const CatalogPage: React.FC = () => {
   }
 
   return (
-    <Suspense fallback={<Loading />}>
     <main className={cls.catalogPage}>
-      <div className={cls.sidebarBlock}>
+      <div className={cls.sidebar}>
         <Sidebar />
       </div>
       <div className={cls.catalogContent}>
-        <Search reversed className={cls.search} searchArr={products} />
+        <Search className={cls.search} searchArr={products} />
         <div className={cls.cards}>
           {filteredProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
@@ -75,7 +74,6 @@ const CatalogPage: React.FC = () => {
         }
       </div>
     </main>
-    </Suspense>
   );
 };
 export default CatalogPage;

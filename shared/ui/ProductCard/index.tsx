@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { Label } from '../Label';
 import Link from 'next/link';
 import { useProductcard } from '@/hook/useProductCard';
+import { useCheckUserAuth } from '@/hook/useCheckUserAuth';
 
 interface Product {
   id: number;
@@ -17,17 +18,21 @@ interface Product {
   subcategory?: { codename: string };
   images: { id: number; image: string }[] | null;
 }
+
 const baseURL = 'http://13.60.49.147:8000/';
 
 export const ProductCard = ({ product }: { product: Product }) => {
-  const {addToFavorite, getAllFavorites, removeFavorite, favorites} = useProductcard()
-  // const [selectedPicture, setSelectedPicture] = useState(0);
-  
-  useEffect(() => {
-    getAllFavorites()
-  }, [favorites, getAllFavorites])
-  const isInFavourite = favorites.some((item) => item.id === product.id);
+  const { addToFavorite, getAllFavorites, removeFavorite, favorites } = useProductcard()
+  const { isAuth } = useCheckUserAuth()
 
+  useEffect(() => {
+    if (isAuth) {
+      getAllFavorites()
+    }
+  }, [isAuth, getAllFavorites])
+
+  const isInFavourite = favorites.some((item) => item.id === product.id);
+  
   const quantity = false;
   const sale = false;
 
@@ -46,6 +51,10 @@ export const ProductCard = ({ product }: { product: Product }) => {
     } else {
       addToFavorite(product.id)
     }
+  }
+
+  const handleBuyClick = () => {
+    console.log('купить')
   }
 
   return (
@@ -94,7 +103,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
           </div>
         </div>
       <div className={cls.card_actions}>
-        <button onClick={() => console.log('купить')}>купить</button>
+        <button onClick={handleBuyClick}>купить</button>
         <button>
           <Link href={`/detail/${categoryCodename}/${subcategoryCodename}/${product.id}`}>
             Смотреть

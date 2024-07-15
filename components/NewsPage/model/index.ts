@@ -21,8 +21,6 @@ export const useNews = create<{
   setNews: async () => {
     try {
       const response = await axios('http://13.60.49.147:8000/api/news/list/')
-      console.log(response);
-      
       if (response?.statusText !== 'OK') {
         throw new Error('Failed to fetch news');
       }
@@ -36,8 +34,6 @@ export const useNews = create<{
   getNewsById: async (id: number | string) => {
     try {
       const response = await axios(`http://13.60.49.147:8000/api/news/list/${id}`)
-      console.log(response);
-      
       if (response?.statusText !== 'OK') {
         throw new Error('Failed to fetch news');
       }

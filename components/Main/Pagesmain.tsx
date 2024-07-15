@@ -21,7 +21,9 @@ export default function Pagesmain() {
               <Link href='/catalog'>
                 <Button type="red" className={s.redBtn}>Каталог</Button>
               </Link>
-              <Button type="black" className={s.blackBtn}>Контакты</Button>
+              <Link href='#footer'>
+                <Button type="black" className={s.blackBtn}>Контакты</Button>
+              </Link>
             </div>
             <div className={s.qwe_black}>
               <div className={s.qwe_black_img}>
