@@ -22,6 +22,7 @@ const useAuthentication = () => {
       }
       const data = await response.json();
       const { access, refresh } = data;
+      
       localStorage.setItem('accessToken', access);
       localStorage.setItem('refreshToken', refresh);
       document.cookie = `access=${access}; path=/`;

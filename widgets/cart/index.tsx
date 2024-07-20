@@ -35,7 +35,7 @@ export const CartWidget = () => {
 
   useEffect(() => {
     scrollToTop()
-  }, [])
+  }, [cartStep])
 
   return (
     <div

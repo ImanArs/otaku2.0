@@ -1,6 +1,7 @@
 import React from 'react'
 import cls from './styles.module.scss'
 import RefundTG from '@/public/assets/icons/refund_telegram.svg'
+import GirlImage from '@/public/assets/images/bg_refund.svg'
 
 const RefundPage = () => {
   return (

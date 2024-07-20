@@ -1,7 +1,9 @@
 import React from 'react';
 import cls from './style.module.scss';
 import { Card } from '../../ui/Card';
-import CloseCart from '../closeCart/CloseCart';
+import { useBasket } from '@/hook/useBasket';
+import DeliveryIcon from "@/public/assets/icons/delivery_icon.svg";
+import RefundIcon from "@/public/assets/icons/refundIcon.svg";
 
 const mockData = [
   { id: 1, title: 'lol1', price: 150, description: 'lsadsdassada' },
@@ -16,9 +18,14 @@ interface Props {
 
 const Checkout = (props: Props) => {
   const {nextStep} = props
+  const { getBasket, addToBasket, removeFromBasket, basket } = useBasket();
+
   const handleInnerClick = (event: React.MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
+
+  const productPriceSum = basket.reduce((acc, item) => acc + item.price, 0);
+  const discount = 0
 
   return (
     <>
@@ -26,14 +33,20 @@ const Checkout = (props: Props) => {
         <div className={cls.cartContent} onClick={handleInnerClick}>
           <div>
             <div className={cls.cartItems}>
-              {mockData.map((item, i) => (
-                <Card key={i} product={item} />
+              {basket.map((item) => (
+                <Card key={item.id} product={item} />
               ))}
             </div>
             <div className={cls.cartTotal}>
               <div className={cls.delivery}>
-                <p>Доставка от 1 до 3 дней</p>
-                <p>14 дней на возврат</p>
+                <p>
+                  <DeliveryIcon />
+                  Доставка от 1 до 3 дней
+                </p>
+                <p>
+                  <RefundIcon />
+                  14 дней на возврат
+                </p>
               </div>
               <div className={cls.promotional}>
                 <input type="text" placeholder="ПРОМОКОД" />
@@ -46,10 +59,10 @@ const Checkout = (props: Props) => {
                     <h3>итог:</h3>
                   </div>
                   <div className={cls.price}>
-                    <h3>2000,50</h3>
-                    <h3>201,25</h3>
+                    <h3>{productPriceSum}</h3>
+                    <h3>{discount}</h3>
                     <h3>00,00</h3>
-                    <h3>1799,25</h3>
+                    <h3>{productPriceSum}</h3>
                   </div>
                 </div>
               </div>

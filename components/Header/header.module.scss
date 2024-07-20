@@ -30,6 +30,20 @@
     }
   }
 }
+.headerProfile {
+  font-family: 'VIVL RAIL', serif;
+  color: black;
+  font-size: 14px;
+  font-weight: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-bottom: 80px;
+  text-align: center;
+  svg {
+    margin: 0 auto;
+  }
+}
 .header_blocks_registr{
   padding-top: 10px;
   font-family: 'VIVL RAIL', serif;

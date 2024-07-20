@@ -42,18 +42,20 @@ export const useProductcard = create<{
         });
     });
   },
-  async getAllFavorites() {
+  getAllFavorites: async () => {
     try {
-      const response = await axios('http://13.60.49.147:8000/api/favorites/products/list/', {
+      const response = await axios('http://13.60.49.147:8000/api/favorites/products/list', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           'Content-Type': 'application/json'
         }
       });
-      set({ favorites: response.data[0].products });
-      return response.data;
+      if (response.statusText !== 'OK') {
+        throw new Error('Failed to get favorites');
+      }
+      set({ favorites: response.data.results[0].products });
     } catch (error) {
-      toast.error('Вы должны зарегестрироваться', {
+      toast.error('не удалось получить избранные товары', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -62,7 +64,7 @@ export const useProductcard = create<{
         draggable: true,
         progress: undefined,
         theme: "dark",
-        });
+      });
     }
   },
   removeFavorite: (id) => {

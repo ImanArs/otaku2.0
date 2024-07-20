@@ -1,26 +1,16 @@
-// 'use client'
-import { createContext, useContext, useState } from 'react';
-
-interface AuthContextProps {
-  isAuthenticated: boolean;
-  setIsAuthenticated: (value: boolean) => void;
-}
-
-const AuthContext = createContext<AuthContextProps | undefined>(undefined);
+'use client'
+import { useUpdateUser } from '@/hook/useUpdateUser';
+import { useEffect } from 'react';
 
 export const AuthProvider = ({ children }: { children: any}) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-
+  const {updateUserToken} = useUpdateUser()
+  useEffect(() => {
+    updateUserToken()
+  }, [updateUserToken])
   return (
-    <AuthContext.Provider value={{ isAuthenticated, setIsAuthenticated }}>
+    <>
       {children}
-    </AuthContext.Provider>
+    </>
   );
 };
 
-export const useAuth = () => {
-  const context = useContext(AuthContext);
-  if (!context) {
-  }
-  return context;
-};

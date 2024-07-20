@@ -12,7 +12,9 @@ interface Props {
 export const Button = (props: Props) => {
   const { children, type = 'red', className } = props
   return (
-    <button className={classNames('', {
+    <button
+    {...props} 
+    className={classNames('', {
       [cls.button__red]: type === 'red',
       [cls.button__black]: type === 'black',
     },[cls.button, className])}>

@@ -42,6 +42,7 @@
     .options {
       margin-top: 30px;
       ul {
+        transition: all 0.3s ease-in-out;
         li {
           display: flex;
           flex-direction: row;
@@ -53,6 +54,15 @@
           }
         }
       }
+      .show_btn {
+        font-family: 'Blender Pro 500';
+        font-size: 24px;
+        padding: 18px 0;
+        text-decoration: underline;
+        background: none;
+        border: none;
+        cursor: pointer;
+      }
     }
   }
 }
@@ -61,6 +71,9 @@
   width: 86%;
   margin: 0 auto;
   margin-top: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
   h2 {
     font-size: 48px;
     font-family: var(--vivl-font);
@@ -68,6 +81,20 @@
   .wrapper {
     display: flex;
     gap: 20px;
+  }
+}
+
+
+.delivery_info {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-family: 'Blender Pro 200', serif;
+  li {
+    font-size: 24px;
+    display: flex;
+    gap: 8px;
   }
 }
 

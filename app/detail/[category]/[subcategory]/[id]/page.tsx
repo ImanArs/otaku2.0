@@ -7,6 +7,9 @@ import DetailGallery from "@/pages/DetailPage/ui/Gallery";
 import useProduct from "@/hook/UseProduct";
 import { ProductCard } from "@/shared/ui/ProductCard";
 import { Loading } from "@/shared/ui/loading";
+import DeliveryIcon from "@/public/assets/icons/delivery_icon.svg";
+import RefundIcon from "@/public/assets/icons/refundIcon.svg";
+import { useBasket } from "@/hook/useBasket";
 
 type Props = {
   params: {
@@ -36,11 +39,16 @@ interface Product {
   views: number;
 }
 
+const arr = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19]
+
 const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
   const [post, setPost] = useState<any>(null);
   const products: Product[] = useProduct();
-
+  const {addToBasket, removeFromBasket, getBasket, basket} = useBasket()
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
+  const [options, setOptions] = useState<Number>(5);
+  
+  const isInBasket = basket.some((item) => Number(item.id) === Number(id));
 
   useEffect(() => {
     if (category && category !== "detail") {
@@ -59,13 +67,15 @@ const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
       const postData = await getPostById(id);
       setPost(postData);
     };
-
     fetchData();
-  }, [id]);
+    getBasket()
+  }, [id, getBasket]);
+  
 
   if (!post) {
     return <Loading />;
   }
+
   return (
     <main>
       <div className={cls.detail}>
@@ -74,7 +84,23 @@ const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
           <div className={cls.heading}>
             <h2>{post.title}</h2>
             <span>{post.price}</span>
-            <Button type="red">Добавить в корзину</Button>
+            {
+              !isInBasket ? (
+                <Button 
+                type="red"
+                onClick={() => addToBasket(id)}
+                >
+                  Добавить в корзину
+                </Button>
+              ) : (
+                <Button 
+                type="red"
+                onClick={() => removeFromBasket(id)}
+                >
+                  Удалить из корзины
+                </Button>
+              )
+            }
           </div>
           <div className={cls.variants}>
             {/* {[1, 2, 3, 4, 5, 6].map((card, index) => (
@@ -83,14 +109,31 @@ const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
           </div>
           <div className={cls.options}>
             <ul>
-              {[1, 2, 3, 4, 5, 6].map((option, index) => (
+              {arr.slice(0, Number(options)).map((option, index) => (
                 <li key={index}>
                   <p>lol</p>
                   <div className={cls.line} />
                   <span>значение</span>
                 </li>
               ))}
+              {
+                Number(options) < 10 ? (
+                  <button className={cls.show_btn} onClick={() => setOptions(Number(arr.length))}>показать все</button>
+                ) : (
+                  <button className={cls.show_btn} onClick={() => setOptions(5)}>показать меньше</button>
+                )
+              }
             </ul>
+              <ul className={cls.delivery_info}>
+                <li>
+                  <DeliveryIcon />
+                  Доставка от 1 до 3 дней
+                </li>
+                <li>
+                  <RefundIcon />
+                  14 дней на возврат
+                </li>
+              </ul>
           </div>
         </div>
       </div>

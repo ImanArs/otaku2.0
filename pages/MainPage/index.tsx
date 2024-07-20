@@ -1,3 +1,4 @@
+'use client'
 import Pagesmain from "@/components/Main/Pagesmain";
 import Twomain from "@/components/Main/twomain";
 import React from "react";
