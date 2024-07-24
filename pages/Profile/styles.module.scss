@@ -1,0 +1,91 @@
+.root {
+  max-width: 1260px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  .left {
+    display: flex;
+    flex-direction: column;
+    gap: 74px;
+    .profile_pic {
+      display: flex;
+      gap: 40px;
+      font-family: 'VIVL RAIL';
+      img {
+        width: 283px;
+        height: 233px;
+        clip-path: polygon(0 0, 50% 0, 100% 0, 100% 39%, 100% 89%, 91% 100%, 45% 100%, 0 100%, 0 47%);
+      }
+      .user_info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        .actions {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          button, label {
+            cursor: pointer;
+            color: gray;
+            font-size: 18px;
+            font-family: 'Blender Pro 300';
+            background: none;
+            padding: 0;
+            margin: 0;
+            border: none;
+            border-bottom: 1px solid gray;
+          }
+          label input {
+            width: 0.1px;
+            height: 0.1px;
+            background: #000;
+          }
+        }
+      }
+    }
+    
+    .data_input {
+      max-width: 330px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      .input {
+        input {
+          font-family: 'VIVL RAIL';
+          width: 100%;
+          background: none;
+          border: none;
+          padding: 20px 29px;
+          font-size: 20px;
+        }
+        width: 100%;
+        position: relative;
+        &::before {
+          position: absolute;
+          top: 0px;
+          left: 0px;
+          content: '';
+          z-index: -1;
+          height: 100%;
+          width: 100%;
+          background-image: url(../../public/assets/images/input_bg.png);
+          background-size: 100% 100%;
+        }
+      }
+      .save_btn {
+        margin-top: 44px;
+        display: flex;
+        align-self: self-start;
+        font-size: 24px;
+        font-family: 'VIVL RAIL';
+        padding: 17px 36px;
+      }
+    }
+  }
+  .right {
+    .fav_btn {
+      font-family: 'VIVL RAIL';
+      padding: 7px 20px;
+    }
+  }
+}

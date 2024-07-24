@@ -1,0 +1,27 @@
+.root {
+  display: flex;
+  justify-content: space-between;
+
+  img {
+    width: 120px;
+    height: 110px;
+    clip-path: polygon(7% 0, 100% 0, 100% 35%, 93% 48%, 93% 95%, 86% 100%, 0 100%, 0 6%);
+  }
+
+  .info {
+    max-width: 156px;
+    width: 100%;
+    h3 {
+      font-family: 'Blender Pro 500';
+      font-size: 24px;
+    }
+    p {
+      font-family: 'Blender Pro 300';
+      font-size: 18px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+    }
+  }
+}

@@ -31,7 +31,7 @@ export default function Header() {
       return (
         <div className={s.headerProfile}>
           <ProfileIcon />
-          Личный кабинет
+          <Link href='/profile'>Личный кабинет</Link>
         </div>
       );
     } else {

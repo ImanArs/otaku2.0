@@ -23,8 +23,7 @@ interface Product {
 const baseURL = "http://13.60.49.147:8000/";
 
 export const ProductCard = ({ product }: { product: Product }) => {
-  const { addToFavorite, getAllFavorites, removeFavorite, favorites } =
-    useProductcard();
+  const { addToFavorite, getAllFavorites, removeFavorite, favorites } = useProductcard();
   const { isAuth } = useCheckUserAuth();
   const { getBasket, addToBasket, removeFromBasket, basket } = useBasket();
 
@@ -33,7 +32,7 @@ export const ProductCard = ({ product }: { product: Product }) => {
       getAllFavorites();
       getBasket()
     }
-  }, [isAuth, getAllFavorites, getBasket]);
+  }, []);
 
   const isInFavourite = favorites.some((item) => item.id === product.id);
   const isInBasket = basket.some((item) => item.id === product.id);

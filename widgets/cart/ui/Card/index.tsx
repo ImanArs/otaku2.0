@@ -7,17 +7,18 @@ interface Props {
   product: BasketProduct;
 }
 
+const baseURL = "http://13.60.49.147:8000/";
+
 export const Card = (props: Props) => {
   const { product } = props;
   const {getBasket, addToBasket, removeFromBasket, basket} = useBasket()
-  console.log(product, 'product');
 
   
   return (
     <div className={cls.cartCard}>
       <div className={cls.img}>
         {/* <img src={`http://13.60.49.147:8000/api/${product.images[0].image}`} alt="no image" /> */}
-        <img src={`https://abunaigang.com/cdn/shop/products/nezukopost.png?v=1659899720&width=1445`} alt="no image" />
+        <img src={`${baseURL}${product.images[0].image}`} alt="no image" />
       </div>
       <div className={cls.info}>
         <div className={cls.cross}>

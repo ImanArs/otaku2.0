@@ -3,11 +3,13 @@ import { create } from "zustand";
 import { toast } from 'react-toastify';
 
 export const useProductcard = create<{
+  isLoading: boolean;
   favorites: any[];
   addToFavorite: (id: number) => void;
   getAllFavorites: () => void;
   removeFavorite: (id: number) => void;
 }>((set, get) => ({
+  isLoading: false,
   favorites: [],
   addToFavorite: (id) => {
     const accessToken = localStorage.getItem('accessToken')
@@ -44,6 +46,7 @@ export const useProductcard = create<{
   },
   getAllFavorites: async () => {
     try {
+      set({ isLoading: true });
       const response = await axios('http://13.60.49.147:8000/api/favorites/products/list', {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
@@ -65,6 +68,8 @@ export const useProductcard = create<{
         progress: undefined,
         theme: "dark",
       });
+    } finally {
+      set({ isLoading: false });
     }
   },
   removeFavorite: (id) => {
