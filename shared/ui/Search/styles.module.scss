@@ -89,6 +89,8 @@
     border-right: 2px solid #fff;
     border-left: 2px solid #fff;
     position: relative;
+    clip-path: polygon(0% 1%, 99% 1%, 100% 93%, 94% 100%, 62% 100%, 59% 97%, 40% 97%, 35% 100%, 5% 100%, 0 93%);
+
     &::before {
       content: '';
       position: absolute;
@@ -107,11 +109,12 @@
       width: 100%;
       height: 10px;
       left: 0;
-      bottom: -10px;
+      bottom: 2px;
       background-image: url(../../../public/assets/images/search_bottom_border.png);
       background-repeat: no-repeat;
       // background-position: 100% 100%;
       background-size: 100% 100%;
+
     }
     .result_item {
       cursor: pointer;

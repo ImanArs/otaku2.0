@@ -36,12 +36,16 @@ const Sidebar = ({ className }: { className?: string }) => {
       <div className={cls.sidebar_content}>
       <div className={cls.sidebar_amountWrapper}>
         <div className={cls.amount}>
+          <div className={cls.input_wrapper}>
           <input type="text" value={sliderValues[0]} readOnly />
           <span>сом</span>
+          </div>
         </div>
         <div className={cls.amount}>
+          <div className={cls.input_wrapper}>
           <input type="text" value={sliderValues[1]} readOnly />
           <span>сом</span>
+          </div>
         </div>
       </div>
       <div className={cls.range}>

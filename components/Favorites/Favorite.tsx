@@ -3,21 +3,18 @@ import React, { useCallback, useEffect } from 'react';
 import { Button } from '@/shared/ui/Button';
 import s from './favorite.module.scss';
 import Link from 'next/link';
-import { ProductCard } from '@/shared/ui/ProductCard';
+import ProductCard from '@/shared/ui/ProductCard';
 import { Loading } from '@/shared/ui/loading';
 import { useProductcard } from '@/hook/useProductCard';
+import { FavoritesCard } from '@/shared/ui/FavoritesCard';
 
 const Favorites: React.FC = () => {
-  
   const {getAllFavorites, favorites, isLoading} = useProductcard()
   
-  const memoizedGetAllFavorites = useCallback(() => {
-    getAllFavorites();
-  }, [getAllFavorites]);
 
   useEffect(() => {
-    memoizedGetAllFavorites()
-  }, [memoizedGetAllFavorites])
+    getAllFavorites()
+  }, [])
 
   if (isLoading) {
     return <Loading />
@@ -43,7 +40,7 @@ const Favorites: React.FC = () => {
       ) : (
         <div className={s.productsWrapper}>
         {favorites?.map((item: any) => (
-          <ProductCard key={item.id} product={item} />
+          <FavoritesCard key={item.id} product={item} />
         ))}
       </div>
       )}

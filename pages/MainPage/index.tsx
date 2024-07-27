@@ -2,9 +2,9 @@
 import Pagesmain from "@/components/Main/Pagesmain";
 import Twomain from "@/components/Main/twomain";
 import React from "react";
-import MainBestSellers from "./ui/bestsellers";
 import OurStore from "./ui/ourStore";
 import cls from "./styles.module.scss";
+import MainBestSellers from "./ui/bestsellers";
 import MainNewest from "./ui/newest";
 
 const MainPage = () => {

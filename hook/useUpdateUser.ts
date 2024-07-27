@@ -24,12 +24,12 @@ export const useUpdateUser = create<{
         const { access, refresh } = response.data;
         localStorage.setItem('accessToken', access);
         localStorage.setItem('refreshToken', refresh);
-        toast.success('Token updated successfully');
+        toast.success('Вы успешно вошли в аккаунт!');
       } else {
         throw new Error('Failed to update token');
       }
     } catch (error) {
-      toast.error('Failed to update token');
+      toast.error('Не удалось войти в аккаунт');
     }
   }
 }))

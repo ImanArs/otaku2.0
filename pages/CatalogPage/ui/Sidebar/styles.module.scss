@@ -20,45 +20,79 @@
 
   &_amountWrapper {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
     .amount {
+      width: 110px !important;
+      height: 30px;
       display: flex;
       align-items: center;
-      input {
-        outline: none;
-        color: #fff;
-        max-width: 75px;
-        width: 100%;
-        height: 30px;
-        text-align: center;
-        border: 0 solid #000;
-        background: none;
-        position: relative;
-      }
       &:first-child {
-        position: relative;
-        &::after {
-          padding: 0 10px;
-          position: absolute;
-          content: '';
-          width: 100%;
-          z-index: 1;
-          height: 100%;
-          background: url(../../../../public/assets/icons/Rectangle227.svg) no-repeat;
-          background-size: 100% 100%;
-          transform: scale(-1, 1);
+        width: 100%;
+        background: white;
+        clip-path: polygon(14% 0, 100% 0, 100% 23%, 97% 24%, 97% 78%, 100% 78%, 100% 100%, 0 100%, 0 27%);
+        .input_wrapper {
+          clip-path: polygon(14% 0, 100% 0, 100% 23%, 97% 24%, 97% 78%, 100% 78%, 100% 100%, 0 100%, 0 27%);
+          display: flex;
+          width: 96%;
+          height: 90%;
+          margin: auto;
+          padding: 0 20px;
+          align-content: center;
+          text-align: center;
+          align-items: center;
+          background: #262626;
+          border: none;
+          input {
+            font-family: 'VIVL RAIL';
+            font-weight: 200;
+            font-size: 12px;
+            padding: 0;
+            width: 100%;
+            margin: 0;
+            background: none;
+            border: none;
+          }
+          span {
+            font-family: 'VIVL RAIL';
+            font-weight: 200;
+            font-size: 12px;
+            width: 100%;
+          }
         }
       }
       &:last-child {
-        position: relative;
-        padding: 0 10px;
-        &::after {
-          position: absolute;
-          content: '';
-          width: 95%;
-          z-index: 1;
-          height: 100%;
-          background: url(../../../../public/assets/icons/Rectangle227.svg) ;
-          background-size: 100% 100%;
+        width: 100%;
+        background: white;
+        clip-path: polygon(0% 0%, 88% 0, 100% 25%, 100% 100%, 0 100%, 0 77%, 4% 77%, 4% 23%, 0 23%);
+        .input_wrapper {
+          clip-path: polygon(0% 0%, 88% 0, 100% 25%, 100% 100%, 0 100%, 0 77%, 4% 77%, 4% 23%, 0 23%);
+          display: flex;
+          width: 96%;
+          height: 90%;
+          margin: auto;
+          padding-left: 10px;
+          align-content: center;
+          text-align: center;
+          align-items: center;
+          background: #262626;
+          border: none;
+          input {
+            font-family: 'VIVL RAIL';
+            font-weight: 200;
+            font-size: 12px;
+            padding: 0;
+            width: 100%;
+            margin: 0;
+            background: none;
+            border: none;
+          }
+          span {
+            font-family: 'VIVL RAIL';
+            font-weight: 200;
+            font-size: 12px;
+            width: 100%;
+          }
         }
       }
     }

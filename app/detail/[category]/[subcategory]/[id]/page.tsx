@@ -5,11 +5,12 @@ import cls from "../../styles.module.scss";
 import { getPostById } from "@/hook/usePro";
 import DetailGallery from "@/pages/DetailPage/ui/Gallery";
 import useProduct from "@/hook/UseProduct";
-import { ProductCard } from "@/shared/ui/ProductCard";
+import ProductCard from "@/shared/ui/ProductCard";
 import { Loading } from "@/shared/ui/loading";
 import DeliveryIcon from "@/public/assets/icons/delivery_icon.svg";
 import RefundIcon from "@/public/assets/icons/refundIcon.svg";
 import { useBasket } from "@/hook/useBasket";
+import { useCheckUserAuth } from "@/hook/useCheckUserAuth";
 
 type Props = {
   params: {
@@ -44,7 +45,8 @@ const arr = [1,2,3,4,5,6,7,8,9,11,12,13,14,15,16,17,18,19]
 const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
   const [post, setPost] = useState<any>(null);
   const products: Product[] = useProduct();
-  const {addToBasket, removeFromBasket, getBasket, basket} = useBasket()
+  const {addToBasket, removeFromBasket, getBasket, basket, isLoading} = useBasket()
+  const {isAuth} = useCheckUserAuth()
   const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [options, setOptions] = useState<Number>(5);
   
@@ -67,12 +69,14 @@ const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
       const postData = await getPostById(id);
       setPost(postData);
     };
-    fetchData();
-    getBasket()
-  }, [id, getBasket]);
+    fetchData() 
+    if (isAuth) {
+      getBasket()
+    }
+  }, [id, getBasket, isAuth]);
   
 
-  if (!post) {
+  if (isAuth && isLoading) {
     return <Loading />;
   }
 
@@ -82,36 +86,37 @@ const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
         <DetailGallery product={post} />
         <div className={cls.info}>
           <div className={cls.heading}>
-            <h2>{post.title}</h2>
-            <span>{post.price}</span>
+            <h2>{post?.title}</h2>
+            <span>{post?.price} сом</span>
             {
               !isInBasket ? (
-                <Button 
-                type="red"
-                onClick={() => addToBasket(id)}
-                >
+                <Button
+                  disabled={!isAuth} 
+                  type="red"
+                  onClick={() => addToBasket(id)}
+                  >
                   Добавить в корзину
                 </Button>
               ) : (
                 <Button 
-                type="red"
-                onClick={() => removeFromBasket(id)}
-                >
+                  type="red"
+                  onClick={() => removeFromBasket(id)}
+                  >
                   Удалить из корзины
                 </Button>
               )
             }
           </div>
-          <div className={cls.variants}>
+          {/* <div className={cls.variants}> */}
             {/* {[1, 2, 3, 4, 5, 6].map((card, index) => (
               <ProductVariantCard key={index} />
             ))} */}
-          </div>
+          {/* </div> */}
           <div className={cls.options}>
             <ul>
               {arr.slice(0, Number(options)).map((option, index) => (
                 <li key={index}>
-                  <p>lol</p>
+                  <p>свойство</p>
                   <div className={cls.line} />
                   <span>значение</span>
                 </li>

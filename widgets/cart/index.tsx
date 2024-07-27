@@ -6,9 +6,12 @@ import Checkout from './steps/checkout/Checkout';
 import CloseCart from './steps/closeCart/CloseCart';
 import { Cart } from './steps/cart';
 import { useCart } from '@/hook/useCart';
+import { useCheckUserAuth } from '@/hook/useCheckUserAuth';
+import { NoAccessPage } from '@/pages/noAccessPage';
 
 export const CartWidget = () => {
   const {cartStep, openCart, closeCart, toggleCart, nextStep} = useCart();
+  const {isAuth} = useCheckUserAuth()
   const cartRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,6 +26,7 @@ export const CartWidget = () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, [openCart, closeCart]);
+
 
   const cartSteps: Record<string, ReactNode>= {
     1: <Cart nextStep={nextStep}  />,
@@ -45,7 +49,7 @@ export const CartWidget = () => {
       },[cls.cart],)}
       >
       <div className={cls.heading} onClick={toggleCart}>Корзина</div>
-      {cartSteps[cartStep]}
+      {isAuth ? cartSteps[cartStep] : <NoAccessPage noRedText />}
     </div>
   );
 };

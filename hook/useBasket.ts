@@ -26,12 +26,14 @@ export interface BasketProduct {
 }
 
 export const useBasket = create<{
+  isLoading: boolean
   basket: BasketProduct[]
   addToBasket: (id: string) => void;
   getBasket: () => void;
   removeFromBasket: (id: string) => void;
   clearBasket: () => void;
 }>((set, get) => ({
+  isLoading: true,
   basket: [],
   addToBasket: async (productId) => {
     const accessToken = localStorage.getItem('accessToken')
@@ -69,6 +71,7 @@ export const useBasket = create<{
         });    
     } finally {
       get().getBasket()
+      set({ isLoading: false })
     }
   },
   getBasket: async () => {
@@ -85,7 +88,7 @@ export const useBasket = create<{
       }
       set({ basket: response.data.results[0].products });
     } catch (error) {
-      toast.error('не удалось получить избранные товары', {
+      toast.error('не удалось получить товары из корзины', {
         position: "top-center",
         autoClose: 5000,
         hideProgressBar: false,
@@ -95,6 +98,8 @@ export const useBasket = create<{
         progress: undefined,
         theme: "dark",
       });
+    } finally {
+      set({ isLoading: false })
     }
   },
   removeFromBasket: async (productId) => {
@@ -133,6 +138,7 @@ export const useBasket = create<{
         });    
     } finally {
       get().getBasket()
+      set({ isLoading: false })
     }
   },
   clearBasket: () => {

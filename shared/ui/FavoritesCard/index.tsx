@@ -6,8 +6,6 @@ import classNames from "classnames";
 import { Label } from "../Label";
 import Link from "next/link";
 import { useProductcard } from "@/hook/useProductCard";
-import { useCheckUserAuth } from "@/hook/useCheckUserAuth";
-import { useBasket } from "@/hook/useBasket";
 
 interface Product {
   id: number;
@@ -18,27 +16,9 @@ interface Product {
   subcategory?: { codename: string };
   images: { id: number; image: string }[] | null;
 }
-
 const baseURL = "http://13.60.49.147:8000/";
 
-const ProductCard = ({ product }: { product: Product }) => {
-  const { addToFavorite, getAllFavorites, removeFavorite, favorites } = useProductcard();
-  const { isAuth } = useCheckUserAuth();
-  const { getBasket, addToBasket, removeFromBasket, basket } = useBasket();
-
-  useEffect(() => {
-    if (isAuth) {
-      getAllFavorites();
-      getBasket()
-    }
-  }, []);
-
-  const isInFavourite = favorites.some((item) => item.id === product.id);
-  const isInBasket = basket.some((item) => item.id === product.id);
-
-  const quantity = false;
-  const sale = false;
-
+export const FavoritesCard = ({ product }: { product: Product }) => {
   const categoryCodename = product.category.codename;
   const productName = product.title;
 
@@ -52,27 +32,8 @@ const ProductCard = ({ product }: { product: Product }) => {
     );
   }
 
-  const handleFavClick = () => {
-    if (isInFavourite) {
-      removeFavorite(product.id);
-    } else {
-      addToFavorite(product.id);
-    }
-  };
-
-
   return (
     <div className={cls.card}>
-      {sale && (
-        <Label type="red" className={cls.card_label}>
-          скидка -15%
-        </Label>
-      )}
-      {quantity && (
-        <Label type="black" className={cls.card_label}>
-          нет в наличии
-        </Label>
-      )}
       <div className={cls.card_img}>
         <Link
           href={`/detail/${categoryCodename}/${subcategoryCodename}/${product.id}`}
@@ -82,21 +43,6 @@ const ProductCard = ({ product }: { product: Product }) => {
             alt={`Selected Product Image ${0 + 1}`}
           />
         </Link>
-
-        <button
-          onClick={handleFavClick}
-          className={classNames(
-            "",
-            {
-              [cls.active_heart]: isInFavourite,
-            },
-            [cls.heart]
-          )}
-        >
-          <HeartIcons />
-        </button>
-        <div className={cls.triangle_wrapper}>
-        </div>
         <div className={cls.card_info}>
           <div className={cls.card_info_wrapper}>
             <h3>{product.title}</h3>
@@ -106,11 +52,6 @@ const ProductCard = ({ product }: { product: Product }) => {
         </div>
       </div>
       <div className={cls.card_actions}>
-        {isInBasket ? (
-          <button onClick={() => removeFromBasket(String(product.id))}>Убрать</button>
-        ) : (
-          <button onClick={() => addToBasket(String(product.id))}>купить</button>
-        )}
         <button>
           <Link
             href={`/detail/${categoryCodename}/${subcategoryCodename}/${product.id}`}
@@ -120,7 +61,5 @@ const ProductCard = ({ product }: { product: Product }) => {
         </button>
       </div>
     </div>
-  );
-};
-
-export default React.memo(ProductCard);
+  )
+}

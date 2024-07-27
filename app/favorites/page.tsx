@@ -4,9 +4,9 @@ import React, { Suspense } from 'react'
 
 const Favorite = () => {
   return (
-    <Suspense fallback={<Loading />}>
+    // <Suspense fallback={<Loading />}>
       <Favorites />
-    </Suspense>
+    // </Suspense>
   )
 }
 

@@ -4,7 +4,7 @@ import cls from "./styles.module.scss";
 import useProduct from "@/hook/UseProduct";
 import Sidebar from "./ui/Sidebar";
 import { Search } from "@/shared/ui/Search";
-import { ProductCard } from "@/shared/ui/ProductCard";
+import ProductCard from "@/shared/ui/ProductCard";
 import { useCatalog } from "../../components/CatalogPage/model";
 import { Loading } from "@/shared/ui/loading";
 

@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { CartWidget } from "@/widgets/cart";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useCheckUserAuth } from "@/hook/useCheckUserAuth";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import { Button } from '@/shared/ui/Button';
-import { ProductCard } from '@/shared/ui/ProductCard';
+import ProductCard from '@/shared/ui/ProductCard';
 import cls from './styles.module.scss';
 import useProduct from '@/hook/UseProduct';
 import { Search } from '@/shared/ui/Search';

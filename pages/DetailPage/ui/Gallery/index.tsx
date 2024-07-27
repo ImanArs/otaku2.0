@@ -18,7 +18,7 @@ const DetailGallery = ({ product }: { product: Product }) => {
   if (!product?.images || product.images.length === 0) {
     return <div className={cls.gallery}>No images available.</div>;
   }
-
+  
   return (
     <div className={cls.gallery}>
       <div className={cls.gallery_list}>

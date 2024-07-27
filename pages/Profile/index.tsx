@@ -6,11 +6,14 @@ import { FavoritesWrapper } from "./components/favoritesWrapper";
 import { useProfile } from "@/hook/useProfile";
 import { Loading } from "@/shared/ui/loading";
 import Link from "next/link";
+import { useCheckUserAuth } from "@/hook/useCheckUserAuth";
+import { NoAccessPage } from "../noAccessPage";
 
 const image_placeholder = 'https://cdn.vectorstock.com/i/500p/46/73/person-gray-photo-placeholder-man-material-design-vector-23804673.jpg'
 
 export const ProfileComponent = () => {
   const { getProfile, profile, isLoading, patchProfile } = useProfile();
+  const {isAuth} = useCheckUserAuth()
   const [user, setUser] = React.useState({
     avatar: '',
     firstName: '',
@@ -33,8 +36,10 @@ export const ProfileComponent = () => {
   }, [profile]);
 
   useEffect(() => {
-    getProfile();
-  }, []);
+    if (isAuth) {
+      getProfile();
+    }
+  }, [isAuth, getProfile]);
 
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -66,9 +71,15 @@ export const ProfileComponent = () => {
   const handleSubmitData = () => {
     patchProfile(user);
   }
-  
 
-  console.log(profile?.phone_number);
+  const removeUser = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    window.location.reload();
+  }
+
+  if (!isAuth) return <NoAccessPage />
 
   if (isLoading) {
     return <Loading />
@@ -92,6 +103,7 @@ export const ProfileComponent = () => {
                 Изменить ФОТО
                 <input type='file' name="" id="" onChange={(e) => handleAvatarChange(e)} />
               </label>
+              <button onClick={removeUser}>выйти из аккаунта</button>
             </div>
           </div>
         </div>
