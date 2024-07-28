@@ -13,12 +13,15 @@ interface Profile {
 
 export const useProfile = create<{
   isLoading: boolean;
-  profile: any | undefined;
+  cityList: any[] | null;
+  profile: any | null;
   getProfile: () => Promise<void>;
   patchProfile: (profile: Profile) => Promise<void>;
+  getCityList: () => Promise<void>;
 }>(set => ({
   isLoading: false,
-  profile: undefined,
+  cityList: null,
+  profile: null,
   getProfile: async () => {
     set({ isLoading: true });
     try {
@@ -40,7 +43,7 @@ export const useProfile = create<{
   patchProfile: async (profile: Profile) => {
     set({ isLoading: true });
     try {
-      await axios.put('http://13.60.49.147:8000/api/users/profile/', profile, {
+      await axios.patch('http://13.60.49.147:8000/api/users/profile/', profile, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,
           'Content-Type': 'application/json',
@@ -52,6 +55,20 @@ export const useProfile = create<{
       console.error("Failed to update profile:", error);
       toast.error("Failed to update profile");
       // Optionally, handle the error as needed
+    } finally {
+      set({ isLoading: false });
+    }
+  },
+  getCityList: async () => {
+    try {
+      const response = await axios('http://13.60.49.147:8000/api/city/list/')
+      if (response.status === 200) {
+        set({ cityList: response.data})
+      }
+      toast.success("Country list successfully fetched");
+    } catch (error) {
+      toast.error("Failed to get country list");
+      
     } finally {
       set({ isLoading: false });
     }

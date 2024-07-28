@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { Label } from "../Label";
 import Link from "next/link";
 import { useProductcard } from "@/hook/useProductCard";
+import { useBasket } from "@/hook/useBasket";
 
 interface Product {
   id: number;
@@ -19,6 +20,13 @@ interface Product {
 const baseURL = "http://13.60.49.147:8000/";
 
 export const FavoritesCard = ({ product }: { product: Product }) => {
+  
+  const { getBasket, addToBasket, removeFromBasket, basket } = useBasket();
+  const {removeFavorite} = useProductcard();
+  useEffect(() => {
+    getBasket()
+  }, [])
+  const isInBasket = basket.some((item) => item.id === product.id);
   const categoryCodename = product.category.codename;
   const productName = product.title;
 
@@ -43,6 +51,12 @@ export const FavoritesCard = ({ product }: { product: Product }) => {
             alt={`Selected Product Image ${0 + 1}`}
           />
         </Link>
+        <button
+          onClick={() => removeFavorite(product.id)}
+          className={classNames(cls.active_heart, cls.heart)}
+        >
+          <HeartIcons />
+        </button>
         <div className={cls.card_info}>
           <div className={cls.card_info_wrapper}>
             <h3>{product.title}</h3>
@@ -52,6 +66,11 @@ export const FavoritesCard = ({ product }: { product: Product }) => {
         </div>
       </div>
       <div className={cls.card_actions}>
+      {isInBasket ? (
+          <button onClick={() => removeFromBasket(String(product.id))}>Убрать</button>
+        ) : (
+          <button onClick={() => addToBasket(String(product.id))}>купить</button>
+        )}
         <button>
           <Link
             href={`/detail/${categoryCodename}/${subcategoryCodename}/${product.id}`}

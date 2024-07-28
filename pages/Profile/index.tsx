@@ -12,52 +12,51 @@ import { NoAccessPage } from "../noAccessPage";
 const image_placeholder = 'https://cdn.vectorstock.com/i/500p/46/73/person-gray-photo-placeholder-man-material-design-vector-23804673.jpg'
 
 export const ProfileComponent = () => {
-  const { getProfile, profile, isLoading, patchProfile } = useProfile();
+  const { getProfile, profile, isLoading, patchProfile, getCityList, cityList } = useProfile();
   const {isAuth} = useCheckUserAuth()
   const [user, setUser] = React.useState({
     avatar: '',
-    firstName: '',
-    lastName: '',
+    first_name: '',
+    last_name: '',
+    address: '',
     city: '',
-    phone: '',
+    phone_number: '',
+    email: '',
   });
+  const [avatarFile, setAvatarFile] = React.useState<File | null>(null);
 
   useEffect(() => {
     if (profile) {
       setUser({
         ...user,
         avatar: profile.avatar ?? '',
-        firstName: profile.first_name ?? '',
-        lastName: profile.last_name ?? '',
+        address: profile.address ?? '',
+        first_name: profile.first_name ?? '',
+        last_name: profile.last_name ?? '',
         city: profile.city ?? '',
-        phone: profile.phone_number ?? '',
+        phone_number: profile.phone_number ?? '',
+        email: profile.email ?? '',
       });
     }
   }, [profile]);
+  console.log(profile);
+  
 
   useEffect(() => {
     if (isAuth) {
-      getProfile();
+      getProfile()
+      getCityList()
     }
-  }, [isAuth, getProfile]);
+  }, [isAuth, getProfile])
 
   const handleAvatarChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        setUser({
-          ...user,
-          avatar: reader.result as string,
-        });
-      };
-      reader.readAsDataURL(file);
+      setUser({
+        ...user,
+        avatar: file,
+      });
     }
-    console.log(file);
-    setUser({
-      ...user,
-      avatar: file?.name as string,
-    });
   }
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,7 +68,18 @@ export const ProfileComponent = () => {
   }
 
   const handleSubmitData = () => {
-    patchProfile(user);
+    const formData = new FormData();
+    formData.append('first_name', user.first_name);
+    formData.append('last_name', user.last_name);
+    formData.append('address', user.address);
+    formData.append('city', user.city);
+    formData.append('phone_number', user.phone_number);
+    formData.append('email', user.email);
+    if (avatarFile) {
+      formData.append('avatar', user.avatar);
+    }
+
+    patchProfile(formData);
   }
 
   const removeUser = () => {
@@ -79,7 +89,7 @@ export const ProfileComponent = () => {
     window.location.reload();
   }
 
-  if (!isAuth) return <NoAccessPage />
+  if (!isAuth) return <NoAccessPage noRedText={false} />
 
   if (isLoading) {
     return <Loading />
@@ -95,7 +105,7 @@ export const ProfileComponent = () => {
           />
           <div className={cls.user_info}>
             <div>
-              <h3>{user.firstName} {user.lastName}</h3>
+              <h3>{user.first_name} {user.last_name}</h3>
             </div>
             <div className={cls.actions}>
               <button>Изменить ФИО</button>
@@ -110,22 +120,45 @@ export const ProfileComponent = () => {
 
         <div className={cls.data_input}>
           <div className={cls.input}>
+
+          <select
+              name="city"
+              value={user.city}
+              onChange={(e) => handleInputChange(e)}
+            >
+              <option>выберите город</option>
+              {cityList?.length > 0 && cityList?.map((city) => (
+                <option key={city.id} value={city.id}>{city.name}</option>
+              ))}
+            </select>
+            </div>
+          <div className={cls.input}>
             <input
               type="text"
-              name="city"
-              placeholder="Введите ваш город"
+              name="address"
+              placeholder="Введите ваш адресс"
               id=""
-              value={user?.city}
+              value={user?.address}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
           <div className={cls.input}>
             <input
               type="text"
-              name="phone"
+              name="email"
+              placeholder="Введите ваш email"
+              id=""
+              value={user?.email}
+              onChange={(e) => handleInputChange(e)}
+            />
+          </div>
+          <div className={cls.input}>
+            <input
+              type="text"
+              name="phone_number"
               placeholder="Введите ваш город"
               id=""
-              value={user?.phone}
+              value={user?.phone_number}
               onChange={(e) => handleInputChange(e)}
             />
           </div>
