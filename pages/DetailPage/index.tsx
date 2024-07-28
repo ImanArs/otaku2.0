@@ -57,7 +57,7 @@ export default function DetailPage({ params }: Props) {
             <h2>Значок Наруто название название...</h2>
             <h1>{post.title}</h1>
             <h2>55 сом</h2>
-            <Button type="red">Добавить в корзину</Button>
+            <Button variant="red">Добавить в корзину</Button>
           </div>
           <div className={s.variants}>
             {[1, 2, 3, 4, 5, 6].map((card, index) => (

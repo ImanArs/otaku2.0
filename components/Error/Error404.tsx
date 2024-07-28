@@ -24,7 +24,7 @@ function Error404() {
         <OtakuError404 />
         <OtakuError404 />
       </div>
-      <Button type="red">
+      <Button variant="red">
         <Link href="/">Вернуться на главную</Link>
       </Button>
       <p>Похоже, Вы попали на несуществующую страницу.</p>

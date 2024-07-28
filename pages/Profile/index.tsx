@@ -11,11 +11,22 @@ import { NoAccessPage } from "../noAccessPage";
 
 const image_placeholder = 'https://cdn.vectorstock.com/i/500p/46/73/person-gray-photo-placeholder-man-material-design-vector-23804673.jpg'
 
+interface User {
+  avatar: File | null;
+  first_name: string;
+  last_name: string;
+  address: string;
+  city: string;
+  phone_number: string;
+  email: string;
+}
+
 export const ProfileComponent = () => {
   const { getProfile, profile, isLoading, patchProfile, getCityList, cityList } = useProfile();
   const {isAuth} = useCheckUserAuth()
-  const [user, setUser] = React.useState({
-    avatar: '',
+  
+  const [user, setUser] = React.useState<User>({
+    avatar: null,
     first_name: '',
     last_name: '',
     address: '',
@@ -23,7 +34,6 @@ export const ProfileComponent = () => {
     phone_number: '',
     email: '',
   });
-  const [avatarFile, setAvatarFile] = React.useState<File | null>(null);
 
   useEffect(() => {
     if (profile) {
@@ -39,8 +49,6 @@ export const ProfileComponent = () => {
       });
     }
   }, [profile]);
-  console.log(profile);
-  
 
   useEffect(() => {
     if (isAuth) {
@@ -54,12 +62,12 @@ export const ProfileComponent = () => {
     if (file) {
       setUser({
         ...user,
-        avatar: file,
+        avatar: file as File,
       });
     }
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setUser({
       ...user,
@@ -75,7 +83,7 @@ export const ProfileComponent = () => {
     formData.append('city', user.city);
     formData.append('phone_number', user.phone_number);
     formData.append('email', user.email);
-    if (avatarFile) {
+    if (user.avatar) {
       formData.append('avatar', user.avatar);
     }
 
@@ -100,7 +108,7 @@ export const ProfileComponent = () => {
       <div className={cls.left}>
         <div className={cls.profile_pic}>
           <img
-            src={user.avatar ? user.avatar : image_placeholder}
+            src={user.avatar ? URL.createObjectURL(user.avatar) : image_placeholder}
             alt="user photo"
           />
           <div className={cls.user_info}>
@@ -127,7 +135,7 @@ export const ProfileComponent = () => {
               onChange={(e) => handleInputChange(e)}
             >
               <option>выберите город</option>
-              {cityList?.length > 0 && cityList?.map((city) => (
+              {(cityList?.length ?? 0) > 0 && cityList?.map((city) => (
                 <option key={city.id} value={city.id}>{city.name}</option>
               ))}
             </select>
@@ -162,7 +170,7 @@ export const ProfileComponent = () => {
               onChange={(e) => handleInputChange(e)}
             />
           </div>
-          <Button onClick={handleSubmitData} type="red" className={cls.save_btn}>
+          <Button onClick={handleSubmitData} variant="red" className={cls.save_btn}>
             Сохранить
           </Button>
         </div>
@@ -170,7 +178,7 @@ export const ProfileComponent = () => {
 
       <div className={cls.right}>
         <FavoritesWrapper />
-        <Button type="red" className={cls.fav_btn}>
+        <Button variant="red" className={cls.fav_btn}>
           <Link href="/favorites">перейти</Link>
         </Button>
       </div>

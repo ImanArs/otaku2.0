@@ -65,7 +65,7 @@ import { motion } from 'framer-motion';
                       <input type="password" id="password2" placeholder='Повторите пароль...' name="password2" value={formData.password2} onChange={handleInputChange} />
                     </div>
                     <div className={s.actions}>
-                      <Button type={'black'||'submit'}>подтвердить</Button>
+                      <Button variant='black'>подтвердить</Button>
                     </div>
 
                   </form>

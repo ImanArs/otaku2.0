@@ -92,14 +92,14 @@ const DetailPage: React.FC<Props> = ({ params: { id, category } }: Props) => {
               !isInBasket ? (
                 <Button
                   disabled={!isAuth} 
-                  type="red"
+                  variant="red"
                   onClick={() => addToBasket(id)}
                   >
                   Добавить в корзину
                 </Button>
               ) : (
                 <Button 
-                  type="red"
+                  variant="red"
                   onClick={() => removeFromBasket(id)}
                   >
                   Удалить из корзины

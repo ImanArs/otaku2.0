@@ -34,7 +34,7 @@ const Favorites: React.FC = () => {
             чтобы они отобразились на этой странице
           </span>
           <Link href="/catalog">
-            <Button type="red">Каталог</Button>
+            <Button variant="red">Каталог</Button>
           </Link>
         </div>
       ) : (

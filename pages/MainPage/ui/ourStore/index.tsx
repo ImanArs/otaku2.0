@@ -75,10 +75,10 @@ const OurStore = () => {
           </p>
           <div className={cls.actions}>
             <Link href='/catalog'>
-              <Button type="red">Каталог</Button>
+              <Button variant="red">Каталог</Button>
             </Link>
             <Link href='#footer'>
-              <Button type="black">контакты</Button>
+              <Button variant="black">контакты</Button>
             </Link>
           </div>
         </div>

@@ -72,7 +72,7 @@ const Login: React.FC<Props> = ({ showModal, setShowModal }) => {
               </div>
               {error && <div className={s.error}>{error}</div>}
               <div className={s.actions}>
-                <Button type="black" >Войти</Button>
+                <Button variant="black" >Войти</Button>
               </div>
             </form>
           </div>

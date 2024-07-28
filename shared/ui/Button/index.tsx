@@ -1,22 +1,22 @@
-// import React from 'react'
+import React, { ButtonHTMLAttributes } from 'react'
 import classNames from "classnames";
 import { ReactNode } from "react";
 import cls from './styles.module.scss'
 
-interface Props {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: ReactNode;
-  type?: 'red' | 'black'
+  variant?: 'red' | 'black'
   className?: string
 }
 
-export const Button = (props: Props) => {
-  const { children, type = 'red', className } = props
+export const Button = (props: ButtonProps) => {
+  const { children, variant = 'red', className, ...rest } = props
   return (
     <button
-    {...props} 
+    {...rest} 
     className={classNames('', {
-      [cls.button__red]: type === 'red',
-      [cls.button__black]: type === 'black',
+      [cls.button__red]: variant === 'red',
+      [cls.button__black]: variant === 'black',
     },[cls.button, className])}>
       {children}
     </button>

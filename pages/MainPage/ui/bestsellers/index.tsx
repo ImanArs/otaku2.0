@@ -20,7 +20,7 @@ const MainBestSellers = () => {
         ))}
       </div>
       <div className={cls.button_wrap}>
-        <Button className={cls.bestsellers_button} type="black">
+        <Button className={cls.bestsellers_button} variant="black">
           Больше
         </Button>
       </div>

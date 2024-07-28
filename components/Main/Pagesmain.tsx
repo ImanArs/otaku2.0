@@ -19,10 +19,10 @@ export default function Pagesmain() {
           <div className={s.bottom}>
             <div className={s.buttons}>
               <Link href='/catalog'>
-                <Button type="red" className={s.redBtn}>Каталог</Button>
+                <Button variant="red" className={s.redBtn}>Каталог</Button>
               </Link>
               <Link href='#footer'>
-                <Button type="black" className={s.blackBtn}>Контакты</Button>
+                <Button variant="black" className={s.blackBtn}>Контакты</Button>
               </Link>
             </div>
             <div className={s.qwe_black}>

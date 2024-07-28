@@ -75,7 +75,7 @@ export default function AboutComponents() {
             фигурок до авторских принтов и аксессуаров. В &ldquo;OTAKU&ldquo; каждый товар проходит
             тщательный отбор, чтобы вы могли наслаждаться истинным качеством и долговечностью.
           </p>
-          <Button type="red">
+          <Button variant="red">
             <Link href="/catalog">КАТАЛОГ</Link>
           </Button>
         </div>
@@ -141,7 +141,7 @@ export default function AboutComponents() {
               <li><a href="tel:+12345678910">+1(234)567-89-10</a></li>
             </ul>
             <Link href="https://2gis.kg/bishkek/inside/70030076176806058/firm/70000001064772335?floor=0&m=74.614961%2C42.876732%2F19.97">
-              <Button type="black">Oткрыть карту</Button>
+              <Button variant="black">Oткрыть карту</Button>
             </Link>
           </div>
         </div>

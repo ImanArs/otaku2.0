@@ -36,7 +36,7 @@ const NewsDetails = () => {
           <h1>{singleNews?.title}</h1>
           <p>{singleNews?.description}</p>
           <div className={cls.bottom}>
-            <Button type="black">Поделиться</Button>
+            <Button variant="black">Поделиться</Button>
             <div className={cls.socialIcons}>
               <TikTokIcon />
               <InstaIcon />
